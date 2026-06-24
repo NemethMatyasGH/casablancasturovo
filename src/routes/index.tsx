@@ -437,13 +437,32 @@ function ContactRow({ label, value, link, linkLabel }: { label: string; value: s
 }
 
 function Reservation() {
-  const [form, setForm] = useState({ name: "", people: "2", date: "", time: "19:00", phone: "" });
-  const onSubmit = (e: React.FormEvent) => {
+  const [form, setForm] = useState({ name: "", people: "2", date: "", time: "19:00", phone: "", email: "", note: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Ďakujeme! Vašu rezerváciu potvrdíme telefonicky.", {
-      description: `${form.name}, ${form.people} osôb · ${form.date} o ${form.time}`,
-    });
-    setForm({ name: "", people: "2", date: "", time: "19:00", phone: "" });
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("reservations").insert({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim() || null,
+        date: form.date,
+        time: form.time,
+        guests: parseInt(form.people, 10),
+        note: form.note.trim() || null,
+      });
+      if (error) throw error;
+      toast.success("Ďakujeme! Vašu rezerváciu sme prijali.", {
+        description: `${form.name}, ${form.people} osôb · ${form.date} o ${form.time}. Potvrdíme telefonicky.`,
+      });
+      setForm({ name: "", people: "2", date: "", time: "19:00", phone: "", email: "", note: "" });
+    } catch (err) {
+      console.error(err);
+      toast.error("Rezerváciu sa nepodarilo odoslať. Skúste to znova alebo zavolajte.");
+    } finally {
+      setSubmitting(false);
+    }
   };
   const input = "w-full border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none";
   return (
