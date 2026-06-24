@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
 import exteriorAsset from "@/assets/real/exterior.png.asset.json";
 import kacicaAsset from "@/assets/real/kacica.png.asset.json";
@@ -436,13 +437,32 @@ function ContactRow({ label, value, link, linkLabel }: { label: string; value: s
 }
 
 function Reservation() {
-  const [form, setForm] = useState({ name: "", people: "2", date: "", time: "19:00", phone: "" });
-  const onSubmit = (e: React.FormEvent) => {
+  const [form, setForm] = useState({ name: "", people: "2", date: "", time: "19:00", phone: "", email: "", note: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Ďakujeme! Vašu rezerváciu potvrdíme telefonicky.", {
-      description: `${form.name}, ${form.people} osôb · ${form.date} o ${form.time}`,
-    });
-    setForm({ name: "", people: "2", date: "", time: "19:00", phone: "" });
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("reservations").insert({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim() || null,
+        date: form.date,
+        time: form.time,
+        guests: parseInt(form.people, 10),
+        note: form.note.trim() || null,
+      });
+      if (error) throw error;
+      toast.success("Ďakujeme! Vašu rezerváciu sme prijali.", {
+        description: `${form.name}, ${form.people} osôb · ${form.date} o ${form.time}. Potvrdíme telefonicky.`,
+      });
+      setForm({ name: "", people: "2", date: "", time: "19:00", phone: "", email: "", note: "" });
+    } catch (err) {
+      console.error(err);
+      toast.error("Rezerváciu sa nepodarilo odoslať. Skúste to znova alebo zavolajte.");
+    } finally {
+      setSubmitting(false);
+    }
   };
   const input = "w-full border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none";
   return (
@@ -479,8 +499,16 @@ function Reservation() {
               <input required type="time" value={form.time} onChange={(e) => setForm({ ...form, time: e.target.value })} className={input} />
             </div>
           </div>
-          <button type="submit" className="w-full border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-transparent hover:text-gold">
-            Odoslať rezerváciu
+          <div>
+            <label className="mb-2 block text-xs uppercase tracking-wider text-muted-foreground">Email (nepovinné)</label>
+            <input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} placeholder="vas@email.sk" type="email" />
+          </div>
+          <div>
+            <label className="mb-2 block text-xs uppercase tracking-wider text-muted-foreground">Poznámka (nepovinné)</label>
+            <textarea value={form.note} onChange={(e) => setForm({ ...form, note: e.target.value })} className={input} placeholder="Alergie, špeciálne želania..." rows={3} />
+          </div>
+          <button type="submit" disabled={submitting} className="w-full border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-transparent hover:text-gold disabled:opacity-50">
+            {submitting ? "Odosiela sa..." : "Odoslať rezerváciu"}
           </button>
           <p className="text-center text-xs text-muted-foreground">
             Alebo zavolajte na <a href="tel:+421367522750" className="text-gold hover:underline">036 752 27 50</a>
