@@ -2,14 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import hero from "@/assets/hero.jpg";
-import dish1 from "@/assets/dish1.jpg";
-import dish2 from "@/assets/dish2.jpg";
-import dessert from "@/assets/dessert.jpg";
-import interior from "@/assets/interior.jpg";
-import wine from "@/assets/wine.jpg";
-import appetizer from "@/assets/appetizer.jpg";
-import exterior from "@/assets/exterior.jpg";
+import exteriorAsset from "@/assets/real/exterior.png.asset.json";
+import kacicaAsset from "@/assets/real/kacica.png.asset.json";
+import cordonBleuAsset from "@/assets/real/cordonbleu.png.asset.json";
+import barAsset from "@/assets/real/bar.png.asset.json";
+import rezenAsset from "@/assets/real/rezen.png.asset.json";
+import polievkaAsset from "@/assets/real/polievka.png.asset.json";
+
+const exterior = exteriorAsset.url;
+const kacica = kacicaAsset.url;
+const cordonBleu = cordonBleuAsset.url;
+const bar = barAsset.url;
+const rezen = rezenAsset.url;
+const polievka = polievkaAsset.url;
+const hero = exterior;
+const interior = bar;
 
 export const Route = createFileRoute("/")({
   head: () => ({
