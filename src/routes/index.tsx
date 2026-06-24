@@ -283,13 +283,12 @@ function Menu() {
 
 function Gallery() {
   const imgs = [
-    { src: dish1, alt: "Ribeye steak", cls: "md:col-span-2 md:row-span-2 aspect-square" },
-    { src: interior, alt: "Interiér", cls: "aspect-square" },
-    { src: dessert, alt: "Dezert", cls: "aspect-square" },
-    { src: appetizer, alt: "Predjedlo", cls: "aspect-square" },
-    { src: wine, alt: "Víno", cls: "aspect-square" },
-    { src: dish2, alt: "Tagliatelle", cls: "md:col-span-2 aspect-[2/1]" },
-    { src: exterior, alt: "Exteriér", cls: "md:col-span-2 aspect-[2/1]" },
+    { src: rezen, alt: "Vyprážaný rezeň plnený so šunkou a syrom", cls: "md:col-span-2 md:row-span-2 aspect-square" },
+    { src: bar, alt: "Barový pult v interiéri", cls: "aspect-square" },
+    { src: polievka, alt: "Domáca polievka", cls: "aspect-square" },
+    { src: kacica, alt: "Pečená kačica s knedľou a kapustou", cls: "aspect-square" },
+    { src: cordonBleu, alt: "Cordon Bleu s opekanými zemiakmi", cls: "aspect-square" },
+    { src: exterior, alt: "Exteriér Reštaurácie Casablanca", cls: "md:col-span-2 aspect-[2/1]" },
   ];
   return (
     <section id="galeria" className="px-6 py-28 md:py-36">
