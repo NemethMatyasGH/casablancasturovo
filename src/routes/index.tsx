@@ -385,7 +385,7 @@ function Reservation() {
   return (
     <section id="rezervacia" className="relative overflow-hidden bg-secondary/30 px-6 py-28 md:py-36">
       <div className="absolute inset-0 opacity-10">
-        <img src={wine} alt="" className="h-full w-full object-cover" />
+        <img src={kacica} alt="" className="h-full w-full object-cover" />
       </div>
       <div className="relative mx-auto max-w-2xl">
         <SectionTitle kicker="Rezervácia" title="Rezervujte si stôl" />
