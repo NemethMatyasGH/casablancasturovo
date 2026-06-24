@@ -307,7 +307,7 @@ function About() {
 }
 
 function Menu() {
-  const [active, setActive] = useState<keyof typeof menu>("Šaláty");
+  const [active, setActive] = useState<keyof typeof menu>("Polievky");
   return (
     <section id="menu" className="bg-secondary/30 px-6 py-28 md:py-36">
       <div className="mx-auto max-w-5xl">
