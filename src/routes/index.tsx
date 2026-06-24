@@ -61,27 +61,45 @@ const nav = [
 ];
 
 const menu = {
-  "Predjedlá": [
-    { name: "Kozí syr na listovom šaláte", desc: "Pečený kozí syr, vlašské orechy, brusnice, med", price: "8,90 €" },
-    { name: "Carpaccio z hovädzieho", desc: "Tenké plátky, parmezán, rukola, olivový olej", price: "10,50 €" },
-    { name: "Domáca paštéta", desc: "S brusnicovou redukciou a hriankou", price: "7,20 €" },
+  "Šaláty": [
+    { name: "Hlávkový šalát s dressingom a syrom", desc: "150 g · Fejessaláta sajttal és dresszinggel", price: "4,50 €" },
+    { name: "Kapustový šalát", desc: "120 g · Káposztasaláta", price: "3,50 €" },
+    { name: "Uhorkový šalát s kyslou smotanou", desc: "120 g · Tejfölös uborkasaláta", price: "4,50 €" },
+    { name: "Rajčinový šalát", desc: "120 g · Paradicsomsaláta", price: "4,50 €" },
+    { name: "Paprikový šalát", desc: "120 g · Paprikasaláta", price: "4,50 €" },
+    { name: "Miešaný šalát z čerstvej zeleniny", desc: "120 g · Primőr vegyessaláta", price: "5,00 €" },
+    { name: "Tatárska omáčka", desc: "50 g", price: "0,90 €" },
+    { name: "Kečup", desc: "50 g", price: "0,90 €" },
+    { name: "Smotana", desc: "50 g", price: "0,90 €" },
   ],
-  "Hlavné jedlá": [
-    { name: "Ribeye steak", desc: "300 g zrejúce hovädzie, demi-glace, grilovaná zelenina", price: "24,90 €" },
-    { name: "Tagliatelle s hľuzovkou", desc: "Domáce cestoviny, smotanová omáčka, čierna hľuzovka", price: "16,80 €" },
-    { name: "Confit z kačice", desc: "Pomalu pečené kačacie stehno, dyňové pyré, červená kapusta", price: "18,50 €" },
-    { name: "Pstruh na masle", desc: "Filet z pstruha, citrónové maslo, mandle, varené zemiaky", price: "15,90 €" },
+  "Bravčové mäso": [
+    { name: "Cigánske bravčové rebierko", desc: "150 g · Cigánypecsenye / Roast Pork Rib", price: "9,90 €" },
+    { name: "Bravčové medailónky s Rockfortom", desc: "150 g · Rockfortos szűzérmék", price: "9,90 €" },
+    { name: "Bravčový rezeň plnený mozočkom", desc: "150 g · Velővel töltött sertésszelet", price: "9,90 €" },
+    { name: "Sedliacka bravčová pečienka, dusená kapusta, knedle", desc: "150 g · Fokhagymás malacsült, párolt káposzta, knédli", price: "9,90 €" },
   ],
-  "Dezerty": [
-    { name: "Čokoládové fondán", desc: "Tečúce srdce, lesné ovocie, vanilková zmrzlina", price: "7,50 €" },
-    { name: "Crème brûlée", desc: "Klasický francúzsky krém s karamelizovaným cukrom", price: "6,80 €" },
-    { name: "Domáci medovník", desc: "Šľahačka, marinované brusnice", price: "5,90 €" },
+  "Teľacie mäso": [
+    { name: "Parížsky rezeň (rezeň v cestíčku)", desc: "150 g · Párizsi szelet / Veal Cutlet Paris style", price: "19,50 €" },
+    { name: "Býčia láska", desc: "150 g · Vyprážané, restované býčie žľazy", price: "9,90 €" },
   ],
   "Nápoje": [
-    { name: "Domáca limonáda", desc: "Mäta, citrón, zázvor", price: "3,90 €" },
-    { name: "Pohár vína (0,15 l)", desc: "Výber zo slovenských a medzinárodných vín", price: "od 3,50 €" },
-    { name: "Espresso", desc: "100% Arabica", price: "2,20 €" },
-    { name: "Čerstvo vylisované šťavy", desc: "Pomaranč, jablko, mrkva", price: "4,50 €" },
+    { name: "Courvoisier V.S.O.P.", desc: "Cognac · 2 cl / 4 cl", price: "2,00 / 4,00 €" },
+    { name: "Hennessy", desc: "Cognac · 2 cl / 4 cl", price: "2,00 / 4,00 €" },
+    { name: "Remy Martin", desc: "Cognac · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Ballantines", desc: "Whisky · 2 cl / 4 cl", price: "1,00 / 2,00 €" },
+    { name: "Johnny Walker", desc: "Whisky · 2 cl / 4 cl", price: "1,00 / 2,00 €" },
+    { name: "Jim Beam Bourbon", desc: "Whisky · 2 cl / 4 cl", price: "1,00 / 2,00 €" },
+    { name: "Jack Daniels", desc: "Whisky · 2 cl / 4 cl", price: "1,50 / 3,00 €" },
+    { name: "Chivas Regal", desc: "Whisky · 2 cl / 4 cl", price: "2,00 / 4,00 €" },
+    { name: "Tullamore Dew", desc: "Whisky · 2 cl / 4 cl", price: "2,00 / 4,00 €" },
+    { name: "Divá višňa (SZICSEK)", desc: "44 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Viliams – hruškovica (SZICSEK)", desc: "44 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Duľovica (SZICSEK)", desc: "46 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Marhuľovica (SZICSEK)", desc: "44 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Irsai Oliver (SZICSEK)", desc: "44 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Bazovica (SZICSEK)", desc: "46 % · 2 cl / 4 cl", price: "3,00 / 6,00 €" },
+    { name: "Hubert „de Luxe\"", desc: "Šumivé víno · 0,7 l", price: "15,00 €" },
+    { name: "Hubert Classic Metode suché", desc: "Šumivé víno · 0,7 l", price: "15,00 €" },
   ],
 } as const;
 
