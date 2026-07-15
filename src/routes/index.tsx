@@ -3,19 +3,13 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
-import exteriorAsset from "@/assets/real/exterior.png.asset.json";
-import kacicaAsset from "@/assets/real/kacica.png.asset.json";
-import cordonBleuAsset from "@/assets/real/cordonbleu.png.asset.json";
-import barAsset from "@/assets/real/bar.png.asset.json";
-import rezenAsset from "@/assets/real/rezen.png.asset.json";
-import polievkaAsset from "@/assets/real/polievka.png.asset.json";
+import exterior from "@/assets/real/exterior.png";
+import kacica from "@/assets/real/kacica.png";
+import cordonBleu from "@/assets/real/cordonbleu.png";
+import bar from "@/assets/real/bar.png";
+import rezen from "@/assets/real/rezen.png";
+import polievka from "@/assets/real/polievka.png";
 
-const exterior = exteriorAsset.url;
-const kacica = kacicaAsset.url;
-const cordonBleu = cordonBleuAsset.url;
-const bar = barAsset.url;
-const rezen = rezenAsset.url;
-const polievka = polievkaAsset.url;
 const hero = exterior;
 const interior = bar;
 
